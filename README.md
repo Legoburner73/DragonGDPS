@@ -1,5 +1,5 @@
-# GMDprivateServer
-## Geometry Dash Private Server
+# DragonGDPS
+## Custom Edited Servers for DragonGDPS
 Basically a Geometry Dash Server Emulator
 
 Supported version of Geometry Dash: 1.0 - 2.11 (so any version of Geometry Dash works, as of writing this [December 10, 2017])
@@ -22,4 +22,9 @@ Using this for cloud save encryption - https://github.com/defuse/php-encryption 
 
 Jscolor (color picker in packCreate.php) - http://jscolor.com/
 
+Credit for the base server goes to Cvolton.
+
 Most of the stuff in generateHash.php has been figured out by pavlukivan and Italian APK Downloader, so credits to them
+
+### Notice
+Please do NOT send data to my api. That stuff is very important to the smooth running of the GDPS and any external calls to the api endpoints that are used in here that are not the server will mess up the server.
