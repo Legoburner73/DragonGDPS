@@ -66,6 +66,22 @@ if($id != "" AND $comment != ""){
 		}
 	}else{
 		$query->execute([':userName' => $userName, ':comment' => $comment, ':levelID' => $levelID, ':userID' => $userID, ':uploadDate' => $uploadDate, ':percent' => $percent]);
+		$inside_data = array('username' => $userName, 'message' => $decodecomment, 'levelID' => $levelID, 'userID' => $userID, 'uploadDate' => $uploadDate);
+            	$inside_data_string = json_encode($inside_data);
+            	$data = array("event" => "comment_upload", "data" => $inside_data_string);                                                                    
+		$data_string = json_encode($data);                                                                                   
+                                                                                                                     
+		$ch = curl_init('http://legodev.glitch.me/api/dragongdps');                                                                      
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+    			'Content-Type: application/json',                                                                                
+    			'Content-Length: ' . strlen($data_string))                                                                       
+		);                                                                                                                   
+                                                                                                                     
+		$result = curl_exec($ch);
+		curl_close($ch);
 		echo 1;
 	}
 }else{
